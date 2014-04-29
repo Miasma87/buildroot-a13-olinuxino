@@ -1,0 +1,20 @@
+Fix a git error.
+
+Signed-off-by: Vivien Giraud (buildroot@viviengiraud.fr))
+
+diff -purN a/src/Makefile.am
+--- a/src/Makefile.am	2014-04-22 16:49:25.782259971 +0200
++++ b/src/Makefile.am	2013-03-14 10:56:15.000000000 +0100
+@@ -500,6 +500,11 @@ $(srcdir)/revision.txt:
+ 
+ stamp-revision:
+ 	$(AM_V_at)rm -f -- revision.tmp
+-	$(AM_V_GEN)if ! git \
+-			--git-dir="$(top_srcdir)/.git/" describe \
+-			--tags --long --match '?.*.*' --always; then \
+-		cat $(srcdir)/revision.txt ; \
+-	fi > revision.tmp
+ 	$(AM_V_at)if diff revision.tmp $(srcdir)/revision.txt >/dev/null 2>&1; then \
+ 		rm -f -- revision.tmp; \
+ 	else \
+
