@@ -1,0 +1,16 @@
+config BR2_PACKAGE_TVOS
+	bool "tvos"
+	depends on (BR2_UCLIBC_VERSION_SNAPSHOT || BR2_TOOLCHAIN_USES_GLIBC) # spawn.h
+	depends on BR2_LARGEFILE
+	depends on BR2_USE_WCHAR
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on BR2_PACKAGE_VLC_CEDARX
+	depends on BR2_PACKAGE_LIBCEDARX
+	depends on BR2_PACKAGE_QT
+	help
+	  TVOS
+
+	  https://trac.tvos.fr
+
+comment "TVOS needs a uclibc snapshot or (e)glibc toolchain w/ largefile, wchar, threads, lua, Qt4.8, vlc_cedarX"
+	depends on !(BR2_UCLIBC_VERSION_SNAPSHOT || BR2_TOOLCHAIN_USES_GLIBC) || !BR2_LARGEFILE || !BR2_USE_WCHAR || !BR2_TOOLCHAIN_HAS_THREADS || !BR2_PACKAGE_LUA || !BR2_PACKAGE_LIBCEDARX || !BR2_PACKAGE_VLC_CEDARX || !BR2_PACKAGE_QT
