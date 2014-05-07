@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBVDPAU_DEV
+	bool "libvdpau-dev"
+	depends on BR2_arm
+	depends on BR2_TOOLCHAIN_USES_GLIBC
+	help
+	  VDPAU library
+
