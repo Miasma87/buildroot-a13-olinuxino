@@ -21,7 +21,7 @@ define OPKG_CREATE_LOCKDIR
 endef
 
 ifeq ($(BR2_PACKAGE_OPKG_GPG_SIGN),y)
-OPKG_CONF_OPT += --enable-gpg
+OPKG_CONF_OPT += --enable-gpg --with-opkglibdir=/var/lib
 OPKG_CONF_ENV = ac_cv_path_GPGME_CONFIG=$(STAGING_DIR)/usr/bin/gpgme-config
 OPKG_DEPENDENCIES += libgpgme
 else
@@ -29,7 +29,7 @@ OPKG_CONF_OPT += --disable-gpg
 endif
 
 ifeq ($(BR2_PACKAGE_OPKG_CURL),y)
-OPKG_CONF_OPT += --enable-curl
+OPKG_CONF_OPT += --enable-curl --enable-ssl-curl
 OPKG_DEPENDENCIES += curl libcurl
 else
 OPKG_CONF_OPT += --disable-curl
