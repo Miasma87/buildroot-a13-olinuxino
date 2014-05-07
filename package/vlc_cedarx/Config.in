@@ -1,0 +1,15 @@
+config BR2_PACKAGE_VLC_CEDARX
+	bool "vlc_cedarx"
+	depends on (BR2_UCLIBC_VERSION_SNAPSHOT || BR2_TOOLCHAIN_USES_GLIBC) # spawn.h
+	depends on BR2_LARGEFILE
+	depends on BR2_USE_WCHAR
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on BR2_PACKAGE_LUA
+	depends on BR2_PACKAGE_LIBCEDARX
+	help
+	  VLC using cedarX
+
+	  https://github.com/willswang/vlc
+
+comment "vlc_cedarX needs a uclibc snapshot or (e)glibc toolchain w/ largefile, wchar, threads, lua, libcedarX"
+	depends on !(BR2_UCLIBC_VERSION_SNAPSHOT || BR2_TOOLCHAIN_USES_GLIBC) || !BR2_LARGEFILE || !BR2_USE_WCHAR || !BR2_TOOLCHAIN_HAS_THREADS || !BR2_PACKAGE_LUA || !BR2_PACKAGE_LIBCEDARX
